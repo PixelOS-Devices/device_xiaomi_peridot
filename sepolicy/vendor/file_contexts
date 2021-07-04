@@ -106,3 +106,6 @@
 /(vendor|odm)/etc/init.panel_info.sh u:object_r:vendor_touch_init_shell_exec:s0
 /sys/devices/virtual/touch/touch_dev/ear_sensor u:object_r:sysfs_tp_virtual_prox:s0
 /sys/devices/virtual/touch/touch_dev/palm_sensor u:object_r:sysfs_tp_virtual_prox:s0
+
+# Touch Sampling
+/sys/devices/platform/goodix_ts.0/switch_report_rate                                               u:object_r:sysfs_htsr:s0

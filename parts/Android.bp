@@ -6,25 +6,34 @@
 
 android_app {
     name: "XiaomiParts",
+    defaults: [
+        "SettingsLibDefaults",
+    ],
+
     certificate: "platform",
     srcs: ["src/**/*.java"],
     platform_apis: true,
     privileged: true,
     system_ext_specific: true,
+
     static_libs: [
         "androidx.core_core",
         "org.lineageos.settings.resources",
-        "SettingsLib",
         "vendor.xiaomi.hw.touchfeature-V1-java"
     ],
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
     required: [
-        "privapp_whitelist_com.xiaomi.settings.xml",
+        "privapp_whitelist_org.lineageos.settings.xml",
     ],
 }
 
 prebuilt_etc {
-    name: "privapp_whitelist_com.xiaomi.settings.xml",
-    src: "permissions/privapp_whitelist_com.xiaomi.settings.xml",
+    name: "privapp_whitelist_org.lineageos.settings.xml",
+    src: "permissions/privapp_whitelist_org.lineageos.settings.xml",
     sub_dir: "permissions",
     system_ext_specific: true,
 }

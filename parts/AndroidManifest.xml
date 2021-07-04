@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2023 Paranoid Android
-
-     SPDX-License-Identifier: Apache-2.0
+    Copyright (C) 2023 Paranoid Android
+    SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xiaomi.settings"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.lineageos.settings"
     android:versionCode="1"
     android:versionName="1.0"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
@@ -20,17 +22,57 @@
         android:label="@string/device_settings_app_name"
         android:persistent="true"
         android:defaultToDeviceProtectedStorage="true"
-        android:directBootAware="true">
+        android:directBootAware="true"
+        android:theme="@style/Theme.SubSettingsBase">
 
+        <!-- Receiver to handle BOOT_COMPLETED events -->
         <receiver
             android:name=".BootCompletedReceiver"
             android:exported="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:replace="android:authorities" />
+
+        <receiver
+            android:name=".Startup"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Activity for Touch Sampling Settings -->
+        <activity
+            android:name=".touchsampling.TouchSamplingSettingsActivity"
+            android:label="@string/htsr_enable_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/htsr_enable_summary" />
+        </activity>
+
+        <!-- Service for managing Touch Sampling -->
+        <service
+            android:name=".touchsampling.TouchSamplingService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
 
     </application>
 </manifest>

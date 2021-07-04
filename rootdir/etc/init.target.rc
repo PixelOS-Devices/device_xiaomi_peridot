@@ -349,6 +349,10 @@ on boot
     chown system system /sys/class/mi_display/disp-DSI-0/max_brightness_clone
     chmod 0664 /sys/class/mi_display/disp-DSI-0/max_brightness_clone
 
+    # Touch
+    chown system system /sys/devices/platform/goodix_ts.0/switch_report_rate
+    chmod 0664 /sys/devices/platform/goodix_ts.0/switch_report_rate
+
     # Display feature sysfs node for panel1
     chown system system /sys/class/mi_display/disp-DSI-1/brightness_clone
     chmod 0664 /sys/class/mi_display/disp-DSI-1/brightness_clone
