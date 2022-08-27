@@ -236,6 +236,9 @@ echo 0-2 > /dev/cpuset/background/cpus
 echo 0-2 > /dev/cpuset/system-background/cpus
 echo 0-7 > /dev/cpuset/top-app/cpus
 
+# Set restricted cpuset to the same CPUs as system-background
+cat /dev/cpuset/system-background/cpus > /dev/cpuset/restricted/cpus
+
 # Configure bus-dcvs
 bus_dcvs="/sys/devices/system/cpu/bus_dcvs"
 
