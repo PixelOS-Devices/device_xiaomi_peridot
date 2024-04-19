@@ -34,6 +34,11 @@ sh_binary {
     vendor: true,
 }
 
+sh_binary {
+    name: "init.sim.restart.sh",
+    src: "system/bin/init.sim.restart.sh",
+}
+
 prebuilt_etc {
     name: "charger_fw_fstab.qti",
     src: "etc/charger_fw_fstab.qti",

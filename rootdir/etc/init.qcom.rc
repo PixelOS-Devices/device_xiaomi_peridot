@@ -734,3 +734,12 @@ service qrtr-lookup /vendor/bin/qrtr-lookup
     group system
     disabled
     oneshot
+
+service sim-restart /system/bin/init.sim.restart.sh
+    class main
+    user root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start sim-restart
