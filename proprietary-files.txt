@@ -2865,7 +2865,6 @@ odm/firmware/haptic_rtp_silk.bin
 
 # WiFi - from Update to LA.VENDOR.14.3.0.r1-11400-lanai.0
 vendor/bin/cnss-daemon|7ddfccc31cc09c188b63f4d7dafbdf695d25c2ad
-vendor/bin/cnss_diag|8bc2816b414da0532ac41726a660484cf96f237a
 vendor/etc/init/init.vendor.wlan.rc|a4d45be8c1e12d4690adbb9a79e882b2f094b2da
 vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so|f9422d43603f22c7837ad9154e83643633981025
 
