@@ -76,7 +76,7 @@
         <library name="audiosphere" path="libasphere.so"/>
         <library name="quasar" path="libquasar.so"/>
         <library name="mispatializer" path="libspatializer.so"/>
-        <library name="misoundfx" path="libmisoundfx.so"/>
+        <library name="misoundfx" path="libmisoundfx_ext.so"/>
         <!--DOLBY START-->
         <library name="shoebox" path="libshoebox.so"/>
         <!--DOLBY DAP-->
