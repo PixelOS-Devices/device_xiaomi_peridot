@@ -110,17 +110,13 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i -E '/media_codecs_(google_audio|google_c2|google_telephony|vendor_audio)/d' "${2}"
             ;;
-        vendor/etc/seccomp_policy/atfwd@2.0.policy)
+        vendor/etc/seccomp_policy/atfwd@2.0.policy|vendor/etc/seccomp_policy/wfdhdcphalservice.policy|vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy|vendor/etc/seccomp_policy/qsap_sensors.policy|vendor/etc/seccomp_policy/qesdksec.policy)
             [ "$2" = "" ] && return 0
-            grep -q "gettid: 1" "${2}" || echo "gettid: 1" >> "${2}"
+            grep -q "gettid: 1" "${2}" || echo -e "\ngettid: 1" >> "${2}"
             ;;
         vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy)
             [ "$2" = "" ] && return 0
             grep -q "setsockopt: 1" "${2}" || echo "setsockopt: 1" >> "${2}"
-            ;;
-        vendor/etc/seccomp_policy/wfdhdcphalservice.policy)
-            [ "$2" = "" ] && return 0
-            grep -q "gettid: 1" "${2}" || echo "gettid: 1" >> "${2}"
             ;;
         *)
             return 1
