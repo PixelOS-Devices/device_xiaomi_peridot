@@ -68,7 +68,6 @@ vendor/etc/init/hw/init.mi_ambient.rc
 odm/etc/audio/sku_cliffs/adsp_sleep_monitor.conf
 odm/etc/audio/sku_cliffs/mixer_paths_cliffs_mtp.xml
 odm/etc/audio/sku_cliffs/mixer_paths_overlay_dynamic.xml
-odm/etc/audio/sku_cliffs/mixer_paths_overlay_static.xml
 odm/etc/audio/sku_cliffs/resourcemanager_cliffs_mtp.xml
 odm/etc/audio_policy_engine_configuration_mi.xml:odm/etc/audio_policy_engine_configuration.xml
 odm/etc/audio_policy_engine_default_stream_volumes.xml
