@@ -193,7 +193,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.common.thread \
     android.hardware.biometrics.common.util \
-    android.hardware.biometrics.fingerprint-V3-ndk.vendor
+    android.hardware.biometrics.common.util.vendor \
+    android.hardware.biometrics.fingerprint-V3-ndk.vendor \
+    android.hardware.biometrics.fingerprint-service.default
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
@@ -626,6 +628,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# Lineage Touch
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.xiaomi
 
 # Vendor
 $(call inherit-product, vendor/xiaomi/peridot/peridot-vendor.mk)
