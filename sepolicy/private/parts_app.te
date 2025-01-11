@@ -1,20 +1,46 @@
-type parts_app, domain;
 typeattribute parts_app mlstrustedsubject;
 
 app_domain(parts_app)
 
 binder_use(parts_app)
 
-allow parts_app activity_service:service_manager find;
-allow parts_app content_capture_service:service_manager find;
-allow parts_app game_service:service_manager find;
-allow parts_app netstats_service:service_manager find;
-allow parts_app sensorservice_service:service_manager find;
-allow parts_app vendor_perf_service:service_manager find;
+allow parts_app {
+  activity_service
+  activity_task_service
+  app_api_service
+  audioserver_service
+  audio_service
+  autofill_service
+  cameraserver_service
+  cameraserver_service
+  content_capture_service
+  device_state_service
+  drmserver_service
+  game_service
+  gpu_service
+  hal_touchfeature_xiaomi_service
+  hint_service
+  media_session_service
+  mediaextractor_service
+  mediametrics_service
+  mediaserver_service
+  netstats_service
+  permission_checker_service
+  sensorservice_service
+  statusbar_service
+  surfaceflinger_service
+  thermal_service
+  trust_service
+  voiceinteraction_service
+}:service_manager find;
+
 allow parts_app system_app_data_file:dir create_dir_perms;
 allow parts_app system_app_data_file:file create_file_perms;
 allow parts_app system_app_data_file:lnk_file create_file_perms;
 
+allow parts_app sysfs_htsr:file rw_file_perms;
+
 hal_client_domain(parts_app, hal_touchfeature_xiaomi)
 binder_call(parts_app, hal_touchfeature_xiaomi)
-allow parts_app hal_touchfeature_xiaomi_service:service_manager find;
+binder_call(parts_app, gpuservice)
+get_prop(parts_app, settingslib_prop)
